@@ -1,0 +1,15 @@
+1-sudo rpm --import https://packages.grafana.com/gpg.key
+2-sudo tee /etc/yum.repos.d/grafana.repo <<EOF
+[grafana]
+name=grafana
+baseurl=https://packages.grafana.com/oss/rpm
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.grafana.com/gpg.key
+EOF
+3-sudo yum clean all
+sudo yum update -y
+4-sudo yum install grafana -y
+5-sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+6-
