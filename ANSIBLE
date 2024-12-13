@@ -1,0 +1,19 @@
+install python - yum install python
+add user - useradd sahil
+change password - passwd sahil
+visudo
+root      ALL=(ALL)     ALL  
+sahil     ALL=(ALL)     NOPASSWD:ALL
+ctrl+O- SAVE(IT IS NOT ZERO)
+ctrl+X -EXIT
+vi /etc/ssh/sshd_config
+passwordauthentication=yes
+systemctl restart sshd
+yum install ansible
+cd /etc
+cd ansible/
+vi hosts
+localhost ansible_connection=local(inside hosts)
+ssh-keygen
+ssh-copy-id sahil@localhost
+ansible all -m ping 
