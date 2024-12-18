@@ -1,0 +1,48 @@
+1-
+# Navigate to the /tmp directory
+cd /tmp
+
+# Download the latest Node Exporter release (replace with the current version, e.g., v1.6.0)
+wget https://github.com/prometheus/node_exporter/releases/download/v1.6.0/node_exporter-1.6.0.linux-amd64.tar.gz
+
+
+2-
+tar -xvzf node_exporter-1.6.0.linux-amd64.tar.gz
+
+3-
+
+sudo mv node_exporter-1.6.0.linux-amd64/node_exporter /usr/local/bin/
+
+4-
+sudo nano /etc/systemd/system/node_exporter.service
+[Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=nobody
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=default.target
+
+
+5-
+# Reload systemd to recognize the new service
+sudo systemctl daemon-reload
+
+# Enable Node Exporter to start on boot
+sudo systemctl enable node_exporter
+
+# Start Node Exporter
+sudo systemctl start node_exporter
+
+6-
+
+sudo systemctl status node_exporter
+
+
+7-
+
+http://your-ec2-public-ip:9100/metrics
