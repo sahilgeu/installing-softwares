@@ -1,0 +1,6 @@
+install java 
+yum install java-11-amazon-corretto-headless
+install maven
+wget https://downloads.apache.org/maven/maven-4/4.0.0-alpha-10/binaries/apache-maven-4.0.0-alpha-10-bin.tar.gz
+tar -xvf apache-maven-4.0.0-alpha-10-bin.tar.gz
+export PATH=$PATH:/opt/apache-maven-4.0.0-alpha-10/bin
